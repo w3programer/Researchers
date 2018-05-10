@@ -1,35 +1,67 @@
-//
-//  TranslationVC.swift
-//  Researchers
-//
-//  Created by hesham tatawy on 24/08/1439 AH.
-//  Copyright © 1439 alatheertech. All rights reserved.
-//
-
 import UIKit
-
 class TranslationVC: UIViewController {
-
+    var urlstr = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func FreeTranslation(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "FreeTranslationSegue", sender: sender )
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func AdvancedTranslation(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "AdvancedTranslationSegue", sender: sender )
+        dismiss(animated: true, completion: nil)
+    }
+   
+ //////links
+    
+    @IBAction func babelfish(_ sender: UIButton) {
+        urlstr = "https://www.babelfish.com/"
+        
+        self.performSegue(withIdentifier: "WebViewSegue", sender: sender )
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func wordreference(_ sender: Any) {
+        urlstr = "http://www.wordreference.com/"
+        
+        self.performSegue(withIdentifier: "WebViewSegue", sender: sender )
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func freetranslation(_ sender: Any) {
+        urlstr = "https://www.freetranslation.com/"
+        
+        self.performSegue(withIdentifier: "WebViewSegue", sender: sender )
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func PromtOnline(_ sender: UIButton) {
+        urlstr = "http://translation2.paralink.com/"
+        
+        self.performSegue(withIdentifier: "WebViewSegue", sender: sender )
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func doctranslator(_ sender: UIButton) {
+        urlstr = "https://www.onlinedoctranslator.com/translationform"
+        
+        self.performSegue(withIdentifier: "WebViewSegue", sender: sender )
+        dismiss(animated: true, completion: nil)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "WebViewSegue" {
+            let destinationVC = segue.destination as! WebController
+            destinationVC.curentUrl = urlstr
+            
+        }
     }
-    */
-
+ ///// advanced translation
+    
+    
 }

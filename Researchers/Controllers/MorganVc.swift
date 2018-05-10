@@ -1,35 +1,25 @@
-//
-//  MorganVc.swift
-//  Researchers
-//
-//  Created by hesham tatawy on 24/08/1439 AH.
-//  Copyright © 1439 alatheertech. All rights reserved.
-//
-
 import UIKit
-
 class MorganVc: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBOutlet weak var SampleNumber: UITextField!
+    @IBOutlet weak var SampleResult: UILabel!
+    @IBAction func Calc(_ sender: UIButton) {
+        let population = Double(SampleNumber.text!)
+        let secoundvalue = population!-1
+        let formla = (population!*0.25)/((secoundvalue*0.00065)+0.25)
+        let result = formla.rounded()
+        SampleResult.text = String(Int(result))
     }
-    */
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
 
 }

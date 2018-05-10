@@ -1,35 +1,52 @@
-//
-//  LoginVC.swift
-//  Researchers
-//
-//  Created by hesham tatawy on 23/08/1439 AH.
-//  Copyright © 1439 alatheertech. All rights reserved.
-//
-
 import UIKit
-
 class LoginVC: UIViewController {
 
+    
+    @IBOutlet var EscapBut: UIButton!
+    @IBOutlet var LogIn: UIButton!
+    @IBOutlet var Register: UIButton!
+    @IBOutlet var UserName: UITextField!
+    @IBOutlet var Password: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        hideNavigationBar()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func EscapeBut(_ sender: Any) {
+        self.performSegue(withIdentifier: "HomeSegue", sender: sender)
+        dismiss(animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func LogIn(_ sender: Any){
+        
+        
     }
-    */
+    
+    @IBAction func Register(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "RegisterSegue", sender: sender)
+        dismiss(animated: true, completion: nil)
+        
+    }
 
+    //////////////
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Show the Navigation Bar
+        //self.navigationController?.setNavigationBarHidden(true, animated: true)
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        // Hide the Navigation Bar
+        //self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
+    
 }

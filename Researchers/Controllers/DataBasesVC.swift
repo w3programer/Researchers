@@ -1,35 +1,43 @@
-//
-//  DataBasesVC.swift
-//  Researchers
-//
-//  Created by hesham tatawy on 24/08/1439 AH.
-//  Copyright © 1439 alatheertech. All rights reserved.
-//
-
 import UIKit
-
 class DataBasesVC: UIViewController {
-
+    var weburl = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        showNavigationBar()
 
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func KingFahedButton(_ sender: UIButton) {
+        weburl = "http://ecat.kfnl.gov.sa:88/hipmain/"
+        self.performSegue(withIdentifier: "WebViewSegue", sender: sender)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func KsaDigtalLibrary(_ sender: UIButton) {
+        weburl = "https://sdl.edu.sa/SDLPortal/Publishers.aspx"
+        self.performSegue(withIdentifier: "WebViewSegue", sender: sender)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func KingAbdulaDigtalLibrary(_ sender: UIButton) {
+        weburl = "http://libsierra.uqu.edu.sa/"
+        self.performSegue(withIdentifier: "WebViewSegue", sender: sender)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "WebViewSegue" {
+            let destinationVC = segue.destination as! WebController
+            destinationVC.curentUrl = weburl
+            
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
