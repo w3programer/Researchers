@@ -3,8 +3,13 @@ class TranslationVC: UIViewController {
     var urlstr = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
-    
+   /* override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        showNavigationBar()
+    }*/
+  
     @IBAction func FreeTranslation(_ sender: UIButton) {
         self.performSegue(withIdentifier: "FreeTranslationSegue", sender: sender )
         dismiss(animated: true, completion: nil)

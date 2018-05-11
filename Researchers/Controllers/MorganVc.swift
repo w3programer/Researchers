@@ -9,7 +9,13 @@ class MorganVc: UIViewController {
     @IBOutlet weak var SampleNumber: UITextField!
     @IBOutlet weak var SampleResult: UILabel!
     @IBAction func Calc(_ sender: UIButton) {
-        let population = Double(SampleNumber.text!)
+       
+        
+        guard let samplevalue = SampleNumber.text?.trimmed, !samplevalue.isEmpty
+            else {
+                return
+        }
+        let population = Double(samplevalue)
         let secoundvalue = population!-1
         let formla = (population!*0.25)/((secoundvalue*0.00065)+0.25)
         let result = formla.rounded()

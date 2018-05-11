@@ -21,11 +21,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideNavigationBar()
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
         translationstring()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        hideNavigationBar()
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        showNavigationBar()
+    }
     @IBAction func DatabaseButton(_ sender: Any) {
         self.performSegue(withIdentifier: "DatabAseSegue", sender: sender)
         dismiss(animated: true, completion: nil)
@@ -62,7 +69,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func ControleButton(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: "ArbitrationSegue", sender: sender)
+        dismiss(animated: true, completion: nil)
         
     }
     
@@ -75,7 +83,9 @@ class ViewController: UIViewController {
     
     @IBAction func AnalysisButton(_ sender: Any) {
         
-        
+        self.performSegue(withIdentifier: "AnalysisSegue", sender: sender)
+        dismiss(animated: true, completion: nil)
+
     }
     
     

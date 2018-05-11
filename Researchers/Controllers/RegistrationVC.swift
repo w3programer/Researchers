@@ -1,35 +1,68 @@
-//
-//  RegistrationVC.swift
-//  Researchers
-//
-//  Created by hesham tatawy on 23/08/1439 AH.
-//  Copyright © 1439 alatheertech. All rights reserved.
-//
-
 import UIKit
 
-class RegistrationVC: UIViewController {
-
+class RegistrationVC: UIViewController ,UIPickerViewDelegate,UIPickerViewDataSource {
+    
+    let spiclization = ["إختر التخصص","باحث","محلل إحصائي","محكم","مدقق لغوي"]
+    let degree = ["إختر الدرجه العلميه","دكتور","معيد","محاضر","أستاذ مساعد","أستاذ مشارك","أستاذ","طالب "]
+   @IBOutlet var Spicialization: UIPickerView!
+    
+    @IBOutlet var Degree: UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        Spicialization.dataSource = self
+        Spicialization.delegate = self
+        Degree.dataSource = self
+        Degree.delegate = self
 
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == Spicialization{
+            return spiclization.count
 
-    /*
-    // MARK: - Navigation
+        }else if pickerView == Degree {
+            return degree.count
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        }
+        return 1
     }
-    */
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        if pickerView == Spicialization{
+            return spiclization[row]
 
+        }else if pickerView == Degree {
+            return degree[row]
+
+        }
+        return ""
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var title = ""
+        if pickerView == Spicialization{
+             title = spiclization[row]
+        }else if pickerView == Degree {
+             title = degree[row]
+        }
+        
+        let myytitle = NSAttributedString(string: title , attributes: [NSAttributedStringKey.font: UIFont(name:"Georgia",size: 30.0) ?? "Georgia",NSAttributedStringKey.foregroundColor : UIColor.white])
+        return myytitle
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+      
+        if pickerView == Spicialization{
+       print(spiclization[row])
+        }else if pickerView == Degree {
+              print(degree[row])
+        }
+        
+      
+    }
+    
 }
