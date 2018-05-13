@@ -3,7 +3,7 @@ class DataBasesVC: UIViewController {
     var weburl = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        showNavigationBar()
+       showNavigationBar()
 
     }
     

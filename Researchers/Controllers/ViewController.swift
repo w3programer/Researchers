@@ -6,19 +6,13 @@ class ViewController: UIViewController {
     @IBOutlet var Database: UIButton!
     @IBOutlet var Samples: UIButton!
     @IBOutlet var translation: UIButton!
-    
     @IBOutlet var Traning: UIButton!
-    
     @IBOutlet var arbitration: UIButton!
     @IBOutlet var audit: UIButton!
-    
     @IBOutlet var documentation: UIButton!
-    
     @IBOutlet var spss: UIButton!
     @IBOutlet var services: UIButton!
-    
-    @IBOutlet var citation: UIButton!
-    
+    @IBOutlet var citation: UIButton!    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
@@ -35,28 +29,28 @@ class ViewController: UIViewController {
     }
     @IBAction func DatabaseButton(_ sender: Any) {
         self.performSegue(withIdentifier: "DatabAseSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
         
         
     }
     
     @IBAction func SamplesButton(_ sender: Any) {
         self.performSegue(withIdentifier: "SamplesSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
         
         
     }
     
     @IBAction func TraningButton(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "CourcesSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "TraningSegue", sender: sender)
+        //dismiss(animated: true, completion: nil)
         
     }
     @IBAction func TranslationButton(_ sender: Any) {
         //
         self.performSegue(withIdentifier: "TranslationSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+       // dismiss(animated: true, completion: nil)
         
         
     }
@@ -64,27 +58,27 @@ class ViewController: UIViewController {
     @IBAction func AuditButton(_ sender: Any) {
         weburl = "https://www.bibme.org/grammar-and-plagiarism/?=bmp_BM.A.300-250&intcid=wt.BibMe.BM.A.300-250&inhousead=BM.A.300-250"
         self.performSegue(withIdentifier: "WebViewSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+       // dismiss(animated: true, completion: nil)
         
     }
     
     @IBAction func ControleButton(_ sender: Any) {
         self.performSegue(withIdentifier: "ArbitrationSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+      //  dismiss(animated: true, completion: nil)
         
     }
     
     @IBAction func DocumentationButton(_ sender: Any) {
         weburl = "http://www.bibme.org/items/new"
         self.performSegue(withIdentifier: "WebViewSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+       // dismiss(animated: true, completion: nil)
         
     }
     
     @IBAction func AnalysisButton(_ sender: Any) {
         
         self.performSegue(withIdentifier: "AnalysisSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+      //  dismiss(animated: true, completion: nil)
 
     }
     
@@ -92,7 +86,7 @@ class ViewController: UIViewController {
     @IBAction func Tracker(_ sender: Any) {
         weburl = "https://www.bibme.org/grammar-and-plagiarism/?=bmp_BM.C.300-250&intcid=wt.BibMe.BM.C.300-250&inhousead=BM.C.300-250"
         self.performSegue(withIdentifier: "WebViewSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+       // dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
