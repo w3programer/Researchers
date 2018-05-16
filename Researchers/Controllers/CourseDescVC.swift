@@ -31,25 +31,38 @@ class CourseDescVC: UIViewController {
     
     
     @IBAction func BookNow(_ sender: UIButton) {
-        Api.bookcourse(courseid:Int(courseid)!, useridfk: Helper.userid()) { (error:Error?, success :Bool) in
-            if success  {
-
-                self.dismiss(animated: false, completion: nil)
-                let title:String = NSLocalizedString("message title", comment: "")
-                let message:String = NSLocalizedString("message body", comment: "")
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-                self.present(alert,animated: true)
-            }else{
-                self.dismiss(animated: false, completion: nil)
-                let title:String = NSLocalizedString("error", comment: "")
-                let message:String = NSLocalizedString("error mwssage", comment: "")
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "ok", style: .destructive, handler: nil))
-                self.present(alert,animated: true)
+        if Helper.getUserData() == true {
+            Api.bookcourse(courseid:Int(courseid)!, useridfk: Helper.userid()) { (error:Error?, success :Bool) in
+                if success  {
+                    
+                    self.dismiss(animated: false, completion: nil)
+                    let title:String = NSLocalizedString("message title", comment: "")
+                    let message:String = NSLocalizedString("message body", comment: "")
+                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                    self.present(alert,animated: true)
+                }else{
+                    self.dismiss(animated: false, completion: nil)
+                    let title:String = NSLocalizedString("error", comment: "")
+                    let message:String = NSLocalizedString("error mwssage", comment: "")
+                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: .destructive, handler: nil))
+                    self.present(alert,animated: true)
+                }
+                
             }
+      
+        }else{
+            let title:String = NSLocalizedString("message title", comment: "")
+            let message:String = NSLocalizedString("you should register first", comment: "")
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .destructive, handler: nil))
+            self.present(alert,animated: true)
             
         }
+        
     }
+        
+   
     
 }
