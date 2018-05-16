@@ -10,19 +10,19 @@ class DataBasesVC: UIViewController {
     @IBAction func KingFahedButton(_ sender: UIButton) {
         weburl = "http://ecat.kfnl.gov.sa:88/hipmain/"
         self.performSegue(withIdentifier: "WebViewSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+      //  dismiss(animated: true, completion: nil)
     }
     
     @IBAction func KsaDigtalLibrary(_ sender: UIButton) {
         weburl = "https://sdl.edu.sa/SDLPortal/Publishers.aspx"
         self.performSegue(withIdentifier: "WebViewSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+       // dismiss(animated: true, completion: nil)
     }
     
     @IBAction func KingAbdulaDigtalLibrary(_ sender: UIButton) {
         weburl = "http://libsierra.uqu.edu.sa/"
         self.performSegue(withIdentifier: "WebViewSegue", sender: sender)
-        dismiss(animated: true, completion: nil)
+       // dismiss(animated: true, completion: nil)
     }
     
     

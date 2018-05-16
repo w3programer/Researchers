@@ -2,19 +2,35 @@ import UIKit
 class LoginVC: UIViewController {
 
     
-    @IBOutlet var EscapBut: UIButton!
-    @IBOutlet var LogIn: UIButton!
-    @IBOutlet var Register: UIButton!
     @IBOutlet var UserName: UITextField!
     @IBOutlet var Password: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideNavigationBar()
+        if Helper.getUserData() == true {
+            self.performSegue(withIdentifier: "GoHome", sender: self)
+          
+        }
+
+
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        hideNavigationBar()
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        showNavigationBar()
+    }
+    
     @IBAction func EscapeBut(_ sender: Any) {
-        self.performSegue(withIdentifier: "HomeSegue", sender: sender)
-       // dismiss(animated: true, completion: nil)
+        let VC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Home")
+        self.navigationController?.pushViewController(VC, animated: true)
+
     }
     
     @IBAction func LogIn(_ sender: Any){
@@ -43,19 +59,9 @@ class LoginVC: UIViewController {
         
     }
 
-    //////////////
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        UIApplication.shared.statusBarStyle = .lightContent
-        
-        
-    }
+  
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
+  
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent

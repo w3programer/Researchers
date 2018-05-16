@@ -67,6 +67,44 @@ extension UIImageView {
     }
     
 }
+//Data:- base 64 encode
+extension String {
+    //: ### Base64 encoding a string
+    func base64Encoded() -> String? {
+        if let data = self.data(using: .utf8) {
+            return data.base64EncodedString()
+        }
+        return nil
+    }
+    
+    //: ### Base64 decoding a string
+    func base64Decoded() -> String? {
+        if let data = Data(base64Encoded: self) {
+            return String(data: data, encoding: .utf8)
+        }
+        return nil
+    }
+}
+
+extension UIAlertController {
+    func Rebortmessage(title:String,body:String)  {
+        let title:String = NSLocalizedString(title, comment: "")
+        let message:String = NSLocalizedString(body, comment: "")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .destructive, handler: nil))
+        self.present(alert,animated: true)
+    }
+
+}
+
+
+
+
+
+
+
+
+
 
 
 

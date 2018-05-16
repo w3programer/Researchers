@@ -4,7 +4,7 @@ class Helper: NSObject {
         guard let window = UIApplication.shared.keyWindow else{return}
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc:UIViewController
-        if getUserData() {
+        if getUserData(){
             vc = storyboard.instantiateViewController(withIdentifier: "Home")
             
         }else{
@@ -28,12 +28,15 @@ class Helper: NSObject {
     }
     class func getUserData()->Bool{
         let def = UserDefaults.standard
-        return (def.object(forKey: "user_email") as? String) != nil
-        
+        return (def.object(forKey: "user_id") != nil)
     }
     class func logout(){
         let def = UserDefaults.standard
-        def.removeObject(forKey: "user_email")
+        def.removeObject(forKey: "user_id")
         
+    }
+    class func userid()->Int{
+        let def = UserDefaults.standard
+        return def.object(forKey: "user_id") as! Int
     }
 }

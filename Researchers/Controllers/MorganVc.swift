@@ -2,7 +2,7 @@ import UIKit
 class MorganVc: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       navigationController?.title = NSLocalizedString("morgan sample", comment: "morgan sample")
     }
     
     

@@ -19,6 +19,7 @@ class RegistrationVC: UIViewController ,UIPickerViewDelegate,UIPickerViewDataSou
     @IBOutlet var Degree: UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = NSLocalizedString("Registration", comment: "title for registration")
         TypeOfUser.dataSource = self
         TypeOfUser.delegate = self
         Degree.dataSource = self
@@ -27,10 +28,10 @@ class RegistrationVC: UIViewController ,UIPickerViewDelegate,UIPickerViewDataSou
 
     }
     
-  /*  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        self.view.endEditing(true)
-    }*/
+//   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesBegan(touches, with: event)
+//        self.view.endEditing(true)
+//    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -83,7 +84,6 @@ class RegistrationVC: UIViewController ,UIPickerViewDelegate,UIPickerViewDataSou
     }
     
     @IBAction func Register(_ sender: UIButton) {
-
         guard let name = Name.text,!name.isEmpty else {return}
         guard let username = username.text,!username.isEmpty else{return}
         guard let password = password.text?.trimmed else{return}
@@ -94,7 +94,12 @@ class RegistrationVC: UIViewController ,UIPickerViewDelegate,UIPickerViewDataSou
            
             
             if success {
-                
+               
+                let title:String = NSLocalizedString("message title", comment: "")
+                let message:String = NSLocalizedString("message body", comment: "")
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert,animated: true)
                 
             }else{
                 let title:String = NSLocalizedString("loginmessagehead", comment: "")

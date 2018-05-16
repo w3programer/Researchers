@@ -5,8 +5,7 @@ class SampelsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        showNavigationBar()
-
+       navigationController?.title = NSLocalizedString("samples", comment: "samples")
     }
     
     @IBAction func MorganButton(_ sender: Any) {
