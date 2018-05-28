@@ -12,8 +12,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
-        LeftConstrain.constant = 375
-        RightConstrain.constant = 135
+        LeftConstrain.constant = 350
+        RightConstrain.constant = -70
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -32,12 +32,17 @@ class ViewController: UIViewController {
     var menuclose = false
     @IBAction func ContextMenu(_ sender: UIButton) {
         if menuclose == false {
-            LeftConstrain.constant = 240
+            LeftConstrain.constant = 253
             RightConstrain.constant = 0
             menuclose = true
         }else{
-            LeftConstrain.constant = 375
-            RightConstrain.constant = 135
+        
+            
+            LeftConstrain.constant = 350
+            RightConstrain.constant = -70
+
+            
+            
             menuclose = false
 
         }

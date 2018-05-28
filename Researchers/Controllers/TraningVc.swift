@@ -8,24 +8,36 @@ class TraningVc: UIViewController ,UITableViewDelegate ,UITableViewDataSource {
         CourseTable.delegate = self
         CourseTable.separatorInset = .zero
         CourseTable.contentInset = .zero
+        if Api.isconnectedtotheinternet {
+            Api.CoursesEXT{(error :Error?, Courses: [AppCourses]?) in
+                self.courses = Courses!
+                self.CourseTable.reloadData()
+            }
+        }else{
+            let title:String = NSLocalizedString("Network error", comment: "")
+            let message:String = NSLocalizedString("check your internet connection before ", comment: "")
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .destructive, handler: nil))
+            self.present(alert,animated: true)
 
-        Api.CoursesEXT{(error :Error?, Courses: [AppCourses]?) in
-            self.courses = Courses!
-            self.CourseTable.reloadData()
         }
+      
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
         return courses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cel = CourseTable.dequeueReusableCell(withIdentifier: "Course") as! TraningViewCell
-        cel.CourseTitle.text = courses[indexPath.row].course_name
-        cel.CourseDate.text = courses[indexPath.row].course_date
-        cel.CourseDate.text = courses[indexPath.row].course_date
-        let urlString = BaseUrl.uploads+courses[indexPath.row].course_image
-        let url = URL(string: urlString )
-        cel.CourseImage.downloadedFrom(url: url!)
+            let cel = CourseTable.dequeueReusableCell(withIdentifier: "Course") as! TraningViewCell
+            cel.CourseTitle.text = courses[indexPath.row].course_name
+            cel.CourseDate.text = courses[indexPath.row].course_date
+            cel.CourseDate.text = courses[indexPath.row].course_date
+            let urlString = BaseUrl.uploads+courses[indexPath.row].course_image
+            let url = URL(string: urlString )
+            cel.CourseImage.downloadedFrom(url: url!)
+
+        
        // print(courses[indexPath.row].course_id_pk)
 
         return cel
